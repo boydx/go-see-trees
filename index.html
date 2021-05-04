@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset=utf-8 />
+  <title>Go See Trees: Lexington, Ky.</title>
+  <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.css" />
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Work+Sans:wght@300;400;800&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #d3d3d3;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 400;
+      font-size: 100%;
+      color: #3d3d3d;
+    }
+
+    section,
+    header,
+    footer {
+      width: 80%;
+      margin: 10px auto;
+    }
+
+    h1 {
+      font-family: 'Work Sans', sans-serif;
+      font-weight: 300;
+      font-size: 2.5em;
+      /* The em unit. 2.5x the current size */
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      font-family: 'Work sans', sans-serif;
+      font-weight: 700;
+      color: gray;
+      font-size: 1.25em;
+      letter-spacing: .04em;
+    }
+
+    p {
+      font-size: 1em;
+      line-height: 1.5em;
+    }
+
+    a {
+      color: #005daa;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    li {
+      margin: 10px 0
+    }
+
+    #map {
+      width: 100%;
+      margin: 0px auto;
+
+    }
+
+    .max-image-width {
+      width: 100%;
+    }
+
+
+    .linkbox {
+      margin: 3px 0 20px 0;
+      display: block;
+      font-weight: 300;
+    }
+
+    hr {
+      border: 0px;
+      border-bottom: 1px solid #3d3d3d;
+      padding-top: 20px;
+    }
+
+    /* Use float property to make two-column layout. */
+
+    .first-column {
+      float: left;
+      width: 49%;
+      padding-right: 2%;
+    }
+
+    .column {
+      float: left;
+      width: 49%;
+    }
+
+    /* Clear floats after the columns */
+
+    .row:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+
+    /* When browser is 800px wide or less */
+
+    @media screen and (max-width: 800px) {
+
+      .first-column,
+      .column {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- <iframe src="map.html" width="100%" height="440px"></iframe> -->
+  <section>
+    <iframe title="Paint by Nature: Go See Trees" width="100%" height="800px" src="https://cesium.com/ion/stories/viewer/?id=92145716-7ac3-42c8-96b7-3ab6fd4e6e3a" frameborder="0" allow="fullscreen" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+    <a href='https://cesium.com/ion/stories/viewer/?id=92145716-7ac3-42c8-96b7-3ab6fd4e6e3a' class="linkbox">Full screen version</a>
+
+
+
+    <div class="row">
+      <!-- First column, the left half -->
+      <div class="first-column">
+
+        <h1>One pandemic day</h1>
+        <h2>Authored by: Boyd, Spring 2021</h2>
+        <p>Many fruitful discoveries are made by chance. One afternoon in November during the pandemic, my family decided to explore a neighborhood park. We noticed a tree in the far corner of the park with a string wrapped around its trunk that held a small placard. It read, "Go See Trees," and gave information about the tree–it was a pecan tree. It had a QR code that linked to <a href="https://www.lexingtonky.gov/PaintByNature" target="_blank">Paint by Nature</a> project created by the city of Lexington to support artistic works and help residents recognize that certain tree species do better in different urban conditions. </p>
+          
+        <p>The project also had a map. It showed twenty-three trees in unique city locations. Many locations are in city parks and all are publicly accessible. A few trees are in greenway corridors and along major drainages in the city, like Wolf Run. I thought the locations would offer an interesting view of our urban ecosystem. </p> 
+     
+        <iframe width="100%" height="640" style="width: 100%; height: 640px; border: none; max-width: 100%;" frameborder="0" allowfullscreen allow="xr-spatial-tracking; gyroscope; accelerometer" scrolling="no" src="https://kuula.co/share/7SV8B?fs=1&vr=0&zoom=1&thumbs=1&info=1&logo=1"></iframe>
+        <p class="linkbox">A 360 panorama of the chinkapin oak at Jesse clark Middle School</p>
+
+        <p>So, we loaded up the bike trailer with lunch and started our tour of trees. I visited over a dozen that December afternoon and photographed them all GPS-enabled camera. The GPS coordinates from the images were used in a GIS to harvest lidar point cloud data from the <a href="https://kyfromabove.ky.gov/">KyFromAbove</a> project. Twelve trees were selected. A distance of 500 feet from each GPS location was used to create a buffer polygon; the area that contains our point cloud. While the GPS locations were not always exact, each area did capture the highlighted tree.</p>
+        
+        <p>A series of maps were created to explore these trees. The Cesium ion Story at the top of this page is 'Powerpoint for point clouds' and can estimate tree height and canopy width with its measure tool. The trees were not always the highest or largest tree in the area. They were, instead, well suited to its environmental conditions. A second web technology, Potree, was used to render the point clouds in the browser. Finally, a site map for Gardenside Park black walnut was created in Mapbox and shows two-foot elevation contours and a shaded relief digital surface model of the point cloud.</p>
+
+        <P></P>
+
+        <hr>
+        <h3>Data and technology sources</h3>
+        <h4>Data</h4>
+        <ul>
+          <li>The LAS data was downloaded from <a href="https://kyfromabove.ky.gov/">KyFromAbove</a> project.</li>
+          <li>2018 NAIP imagery downloaded from the ftp://kymartian.ky.gov</li>
+        </ul>
+
+        <h4>Tools</h4>
+        <ul>
+          <li>ArcPy and ArcGIS Pro</li>
+          <li>Python modules subprocess, zip, etc.</li>
+          <li>Potree point cloud renderer</li>
+        </ul>
+
+       <h4> Platforms</h4>
+        <ul>
+          <li>Cesium ion</li>
+          <li>Mapbox</li>
+        </ul>
+
+
+
+      </div>
+      <!-- Second column, the right half -->
+      <div class="column">
+        <img class="max-image-width" src="graphics/ky-base-map.png">
+        <p class="linkbox">Visit Gardenside Park black maple <a href='templates/mapbox/' target="_blank">site map</a> </p>
+        <h3>Comparing point clouds</h3>
+        <p>These two visualizations show the chinkapin oak tree at Jesse Clark Middle School, one captured from airborne lidar and the other from ground-based lidar. Both visualizations were rendered in the <a href='https://github.com/potree/potree/'>Potree</a>  conversion utility.</p>
+        <img src="graphics/jc-airborne.jpg" alt="airborne lidar" class='max-image-width'> 
+        <p class="linkbox">Airborne lidar <a href='https://nyc3.digitaloceanspaces.com/astoria/xyz/jesse-clark/index.html' target="_blank">point cloud</a> </p>
+
+        <img src="graphics/jc-ground.jpg" alt="ground lidar" class='max-image-width'> 
+        <p class="linkbox">Ground-based lidar <a href='https://nyc3.digitaloceanspaces.com/astoria/xyz/chinkapin-oak/index.html' target="_blank">point cloud</a> captured from iPad</p>
+  
+
+      </div>
+    </div>
+
+    <!-- <hr>
+
+    <h3>Map details</h3>
+    <p>How was this map made?</p>
+    -->
+
+    <p>
+      University of Kentucky GEO 409, 2021.
+    </p>
+    <hr>
+    <ul>
+      <li>My <a href="https://user.github.io/bluegrass">Bluegrass maps</a></li>
+      <li>Follow me on twitter <a href="https://twitter.com/">@me</a></li>
+      <li>Visit <a href='https://github.com'>@mygithubuser</a> </li>
+      <li><a href="https://uky-gis.github.io">UKy GIS and Mapping</a></li>
+    </ul>
+  </section>
+
+  <footer>
+    <hr>
+
+    <a href="https://uky-gis.github.io">
+      <img src="https://newmapsplus.github.io/assets/graphics/logo-2018-geography-75px-h.png"
+        alt="University of Kentucky Geography">
+    </a>
+
+  </footer>
+
+</body>
+
+</html>
