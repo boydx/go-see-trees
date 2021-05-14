@@ -44,6 +44,9 @@
       font-size: 1.25em;
       letter-spacing: .04em;
     }
+    h4 {
+      margin-bottom: 2px;
+    }
 
     p {
       font-size: 1em;
@@ -61,10 +64,13 @@
 
     ul {
       padding-left: 20px;
+      font-size: 1em;
+      line-height: 1.5em;
+      margin-top: 2px;
     }
 
     li {
-      margin: 10px 0
+      margin: 5px 0
     }
 
     #map {
@@ -136,39 +142,42 @@
       <div class="first-column">
 
         <h1>One pandemic day</h1>
-        <h2>Authored by: Boyd, Spring 2021</h2>
-        <p>Many fruitful discoveries are made by chance. One afternoon in November during the pandemic, my family decided to explore a neighborhood park. We noticed a tree in the far corner of the park with a string wrapped around its trunk that held a small placard. It read, "Go See Trees," and gave information about the tree–it was a pecan tree. It had a QR code that linked to <a href="https://www.lexingtonky.gov/PaintByNature" target="_blank">Paint by Nature</a> project created by the city of Lexington to support artistic works and help residents recognize that certain tree species do better in different urban conditions. </p>
+        <h2>Winter 2020</h2>
+        <p>Many fruitful discoveries are made by chance. One afternoon in November during the pandemic, my family decided to explore a neighborhood park. We noticed a tree in the far corner of the park with a string wrapped around its trunk that held a small placard. It read, "Go See Trees," and gave information about the tree–it was a pecan tree. It had a QR code that linked to the <a href="https://www.lexingtonky.gov/PaintByNature" target="_blank">Paint by Nature</a> project created by the city of Lexington to support artistic works and help residents recognize that certain tree species do better in different urban conditions. </p>
           
         <p>The project also had a map. It showed twenty-three trees in unique city locations. Many locations are in city parks and all are publicly accessible. A few trees are in greenway corridors and along major drainages in the city, like Wolf Run. I thought the locations would offer an interesting view of our urban ecosystem. </p> 
      
         <iframe width="100%" height="640" style="width: 100%; height: 640px; border: none; max-width: 100%;" frameborder="0" allowfullscreen allow="xr-spatial-tracking; gyroscope; accelerometer" scrolling="no" src="https://kuula.co/share/7SV8B?fs=1&vr=0&zoom=1&thumbs=1&info=1&logo=1"></iframe>
         <p class="linkbox">A 360 panorama of the chinkapin oak at Jesse clark Middle School</p>
 
-        <p>So, we loaded up the bike trailer with lunch and started our tour of trees. I visited over a dozen that December afternoon and photographed them all GPS-enabled camera. The GPS coordinates from the images were used in a GIS to harvest lidar point cloud data from the <a href="https://kyfromabove.ky.gov/">KyFromAbove</a> project. Twelve trees were selected. A distance of 500 feet from each GPS location was used to create a buffer polygon; the area that contains our point cloud. While the GPS locations were not always exact, each area did capture the highlighted tree.</p>
+        <p>So, we loaded up the bike trailer with lunch and started our tour of trees. I visited over a dozen that December afternoon and photographed them with a GPS-enabled camera. The GPS coordinates from the images were used to harvest lidar point cloud data from the <a href="https://kyfromabove.ky.gov/">KyFromAbove</a> project. Twelve trees were selected. A distance of 500 feet from each GPS location was used to create a buffer polygon; the area that contains our point cloud. While the GPS locations were not always exact, each area did capture the highlighted tree.</p>
         
-        <p>A series of maps were created to explore these trees. The Cesium ion Story at the top of this page is 'Powerpoint for point clouds' and can estimate tree height and canopy width with its measure tool. The trees were not always the highest or largest tree in the area. They were, instead, well suited to its environmental conditions. A second web technology, Potree, was used to render the point clouds in the browser. Finally, a site map for Gardenside Park black walnut was created in Mapbox and shows two-foot elevation contours and a shaded relief digital surface model of the point cloud.</p>
-
-        <P></P>
+        <p>A series of maps were created to explore these trees. The Cesium ion Story at the top of this page is 'Powerpoint for point clouds' and can estimate tree height and canopy width with its measure tool. The trees were not always the highest or largest tree in the area. They were, instead, well suited to their environmental conditions. A second web technology, Potree, was used to render the point clouds in the browser. Finally, a site map for the Gardenside Park black walnut was created in Mapbox and shows two-foot elevation contours and a shaded relief digital surface model of the point cloud.</p>
 
         <hr>
         <h3>Data and technology sources</h3>
         <h4>Data</h4>
         <ul>
-          <li>The LAS data was downloaded from <a href="https://kyfromabove.ky.gov/">KyFromAbove</a> project.</li>
-          <li>2018 NAIP imagery downloaded from the ftp://kymartian.ky.gov</li>
+          <li>The LAS point cloud data was downloaded from <a href="https://kyfromabove.ky.gov/">KyFromAbove</a> project. A digital elevation model (DEM) and a digital surface model (DSM) were created for each area using its point cloud.</li>
+          <li>2018 NAIP imagery was downloaded from <a href="ftp://kymartian.ky.gov">ftp://kymartian.ky.gov</a> and used to colorize each area's point cloud.</li>
         </ul>
 
         <h4>Tools</h4>
         <ul>
-          <li>ArcPy and ArcGIS Pro</li>
-          <li>Python modules subprocess, zip, etc.</li>
-          <li>Potree point cloud renderer</li>
+          <li> <a href="https://pro.arcgis.com/en/pro-app/latest/arcpy/get-started/what-is-arcpy-.htm">ArcPy</a> in ArcGIS Pro 2.7
+            <ul>
+              <li>A Python notebook was developed in ArcGIS Pro to automate the download, extraction, and processing of all data. The user needs to supply a latitude and longitude for the center of the area, and the buffer distance from that location to define the area of interest.</li>
+              <li>Additional Python modules include subprocess, urllib.request, zipFile, and pandas.</li>
+            </ul>
+          </li>
+          <li><a href="https://rapidlasso.com/lastools/">LAStools</a> to extract and merge point clouds.</li>
+          <li> <a href="https://github.com/potree/potree">Potree</a> point cloud renderer to visualize point clouds in the browser.</li>
         </ul>
 
        <h4> Platforms</h4>
         <ul>
-          <li>Cesium ion</li>
-          <li>Mapbox</li>
+          <li> <a href="https://cesium.com/platform/cesium-ion/">Cesium ion</a></li>
+          <li> <a href="https://www.mapbox.com/mapbox-studio">Mapbox Studio</a></li>
         </ul>
 
 
@@ -176,14 +185,14 @@
       </div>
       <!-- Second column, the right half -->
       <div class="column">
-        <img class="max-image-width" src="graphics/ky-base-map.png">
-        <p class="linkbox">Visit Gardenside Park black maple <a href='templates/mapbox/' target="_blank">site map</a> </p>
+        <a href='templates/mapbox/' target="_blank"><img class="max-image-width" src="graphics/ky-base-map.png"></a>
+        <p class="linkbox">Visit Gardenside Park black maple <a href='templates/mapbox/' target="_blank">site map</a>. (Map uses only <a href="https://www.sarahbellmaps.com/typography-for-topography-belltopo-sans-free-font/">BellTopo Sans</a> typeface.) </p>
         <h3>Comparing point clouds</h3>
         <p>These two visualizations show the chinkapin oak tree at Jesse Clark Middle School, one captured from airborne lidar and the other from ground-based lidar. Both visualizations were rendered in the <a href='https://github.com/potree/potree/'>Potree</a>  conversion utility.</p>
-        <img src="graphics/jc-airborne.jpg" alt="airborne lidar" class='max-image-width'> 
+        <a href='https://nyc3.digitaloceanspaces.com/astoria/xyz/jesse-clark/index.html' target="_blank"><img src="graphics/jc-airborne.jpg" alt="airborne lidar" class='max-image-width'></a> 
         <p class="linkbox">Airborne lidar <a href='https://nyc3.digitaloceanspaces.com/astoria/xyz/jesse-clark/index.html' target="_blank">point cloud</a> </p>
 
-        <img src="graphics/jc-ground.jpg" alt="ground lidar" class='max-image-width'> 
+        <a href='https://nyc3.digitaloceanspaces.com/astoria/xyz/chinkapin-oak/index.html' target="_blank"><img src="graphics/jc-ground.jpg" alt="ground lidar" class='max-image-width'> </a>
         <p class="linkbox">Ground-based lidar <a href='https://nyc3.digitaloceanspaces.com/astoria/xyz/chinkapin-oak/index.html' target="_blank">point cloud</a> captured from iPad</p>
   
 
@@ -195,17 +204,10 @@
     <h3>Map details</h3>
     <p>How was this map made?</p>
     -->
-
-    <p>
-      University of Kentucky GEO 409, 2021.
-    </p>
     <hr>
-    <ul>
-      <li>My <a href="https://user.github.io/bluegrass">Bluegrass maps</a></li>
-      <li>Follow me on twitter <a href="https://twitter.com/">@me</a></li>
-      <li>Visit <a href='https://github.com'>@mygithubuser</a> </li>
-      <li><a href="https://uky-gis.github.io">UKy GIS and Mapping</a></li>
-    </ul>
+    <p>
+      University of Kentucky GEO 409, Spring 2021. <br>
+      <a href="https://uky-gis.github.io">UKy GIS and Mapping</a></p>
   </section>
 
   <footer>
